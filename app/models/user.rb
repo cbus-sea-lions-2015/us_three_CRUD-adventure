@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :urls
+  has_many :animals
 
  def password=(user_word)
      self.secret_word  = BCrypt::Password.create(user_word)

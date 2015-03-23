@@ -26,18 +26,5 @@ end
 
 get '/users/:id' do
 @user = User.find(params[:id])
-@urls = @user.urls
 erb :'/users/show'
-end
-
-post '/users/:id/urls' do
-
-  @url = Url.new
-  @url.long_url = params[:long_url]
-  @url.user_id = session[:id]
-  @url.save
-  logger.info "after save"
-  logger.info "#{@url.inspect}"
-  flash[:notice] = @url.short_url
-  redirect "/users/#{ params[:id]}"
 end
