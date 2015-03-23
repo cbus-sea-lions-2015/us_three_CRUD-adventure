@@ -1,0 +1,13 @@
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<div class='container'>
+  <form action='/users/login' method='POST'>
+    <input type='email' name='email' placeholder='email here' value='<%= @user.email %>'>
+    <input type='password' name='password' placeholder='password here'>
+    <input type='submit' value='Log in'>
+  </form>
+</div>
