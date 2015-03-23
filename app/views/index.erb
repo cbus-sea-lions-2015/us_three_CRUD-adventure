@@ -1,25 +1,36 @@
 <div class="container">
-  <h1 class="jumbotron">Welcome to Our URL Shortener!</h1>
-
-  <form action="/urls" method="post" class="form-inline">
-  <div class="form-group">
-    <input type="text" name="long_url" placeholder="give me long url" class="form-control">
-    <input type="submit" value="Shorten Url" class="btn btn-primary">
-  </div>
-  </form>
+  <h1 class="jumbotron">Welcome to the DevBootcamp Humane Society!</h1>
 
    <h4> Here are the amazing animals that have been adopted </h4>
 
    <% if @all_animals.nil? == false %>
    <table class="table table-striped table-bordered">
      <tr>
-       <th> Adopter </th>
        <th> Adoptee </th>
+       <th> Adopter </th>
      </tr>
-     <% @all_animals.each do |url| %>
+     <% @all_animals.select{|a| !a.adopter.nil? }.each do |animal| %>
       <tr>
-       <td> <%= @animal.name %> </td>
-       <td> <%= @animal.adopter.name %> </td>
+       <td> <%= animal.name %> </td>
+
+       <td> <%= animal.adopter.id %> </td>
+     </tr>
+     <% end %>
+   </table>
+  <% end %>
+
+  <h4>Here are the animals that are rejects</h4>
+
+  <% if @all_animals.nil? == false %>
+   <table class="table table-striped table-bordered">
+     <tr>
+       <th> Poor Animal </th>
+       <th>Location</th>
+     </tr>
+     <% @all_animals.select{|a| a.adopter.nil? }.each do |animal| %>
+      <tr>
+       <td> <%= animal.name %> </td>
+       <td> <%= animal.location.name %> </td>
      </tr>
      <% end %>
    </table>

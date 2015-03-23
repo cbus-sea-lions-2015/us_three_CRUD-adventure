@@ -1,0 +1,11 @@
+
+
+<div class="container">
+<h3><%=@user.name %> edit your profile page</h3>
+<form method="post" action="/users/<%= @user.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <input required type='text' name="user[name]" placeholder="name" value=<%=@user.name %> >
+  <input required type='email' name="user[email]" placeholder="email" value=<%=@user.email %> >
+  <input required type='password' name="user[password]" placeholder="password"  >
+  <input type="submit" value="update">
+</div>

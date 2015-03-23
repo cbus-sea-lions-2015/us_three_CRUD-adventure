@@ -10,7 +10,7 @@ class CreateUrls < ActiveRecord::Migration
 
     create_table :animals do |t|
       t.string :name
-      t.references :adopter
+      t.references :user
       t.references :species
       t.references :location
 
